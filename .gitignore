@@ -19,3 +19,5 @@ CTestTestfile.cmake
 
 # Build directories
 build/
+cmake-build-debug/
+cmake-build-release/
