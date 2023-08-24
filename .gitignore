@@ -1,0 +1,21 @@
+.idea
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+
+# Compiled binaries
+*.o
+*.obj
+*.a
+*.exe
+
+# Generated libraries and executables
+*.so
+*.dll
+*.dylib
+
+# Build directories
+build/
