@@ -24,6 +24,25 @@
 ``` cmake
 file (GLOB_RECURSE src_files src/*.cpp)
 ```
+### install
 
+Deploy files to target directory. First set the base path of deploy destination.
+Following command set install path to "/output/Debug/" in current CMakeLists.txt directory.
+
+```cmake
+set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/output/${CMAKE_BUILD_TYPE}/)
+```
+
+Then use install() to deploy.
+
+```cmake
+# deploy target
+install (TARGETS target_exe DESTINATION ./bin)
+# deploy directory
+install (DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION ./include)
+install (DIRECTORY ${PROJECT_SOURCE_DIR}/config/ DESTINATION ./config)
+# deploy files
+install (FILES ${PROJECT_SOURCE_DIR}/log/log.txt DESTINATION ./)
+```
 
 
