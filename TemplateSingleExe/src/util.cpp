@@ -1,8 +1,10 @@
-#include "util.h"
-#include <iostream>
 
-int main()
+#include "util.h"
+
+namespace Math
 {
-    std::cout << Math::Add(1, 3) << std::endl;
-    return 0;
+    int Add(int a, int b)
+    {
+        return a + b;
+    }
 }

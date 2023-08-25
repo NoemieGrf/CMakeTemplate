@@ -1,9 +1,8 @@
 #include "util.h"
+#include <iostream>
 
-namespace Math
+int main()
 {
-    int Add(int a, int b)
-    {
-        return a + b;
-    }
+    std::cout << Math::Add(1, 3) << std::endl;
+    return 0;
 }
