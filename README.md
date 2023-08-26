@@ -45,4 +45,11 @@ install (DIRECTORY ${PROJECT_SOURCE_DIR}/config/ DESTINATION ./config)
 install (FILES ${PROJECT_SOURCE_DIR}/log/log.txt DESTINATION ./)
 ```
 
+## Sub Project
 
+### library include private and public
+
+- When a project is mean to build a static library or shared library, target include directory should be public. 
+Otherwise, other subproject which uses this library can not see the include path.
+
+- After build, shared library should be copied to the same directory with executable file.
