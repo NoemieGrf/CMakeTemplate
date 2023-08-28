@@ -76,4 +76,14 @@ Otherwise, other subproject which uses this library can not see the include path
 
 After build, shared library should be copied to the same directory with executable file.
 
+```cmake
+add_custom_command(TARGET targetExe POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:targetDll> ${CMAKE_CURRENT_BINARY_DIR}/)
+```
+
+Command above means, after build finish of project "targetExe", run custom command to copy output file
+of project "targetDll" to directory "CMAKE_CURRENT_BINARY_DIR".
+CMAKE_COMMAND is a variable which stores the cmake executable file path, 
+TARGET_FILE is a expression which returns the artifacts of project "targetDll".
+
 
