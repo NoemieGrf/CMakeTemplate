@@ -1,9 +1,6 @@
 #include "util.h"
 
-namespace Math
+int Math::Add(int a, int b)
 {
-    int Add(int a, int b)
-    {
-        return a + b;
-    }
+    return a + b;
 }
