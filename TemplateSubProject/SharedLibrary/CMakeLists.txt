@@ -6,6 +6,9 @@ file (GLOB_RECURSE src_files src/*.cpp)
 
 add_library(print SHARED ${src_files})
 
+# add macro DLL_EXPORT to use dllexport
+target_compile_definitions(print PRIVATE DLL_EXPORT)
+
 # alias name
 add_library(sub::libprint ALIAS print)
 

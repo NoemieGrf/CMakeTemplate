@@ -2,10 +2,7 @@
 
 #include <iostream>
 
-namespace Print
+void DoPrint()
 {
-    void DoPrint()
-    {
-        std::cout << "Hello World!" <<  std::endl;
-    }
+    std::cout << "Hello World!" <<  std::endl;
 }
