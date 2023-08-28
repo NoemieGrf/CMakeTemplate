@@ -28,7 +28,7 @@ file (GLOB_RECURSE src_files src/*.cpp)
 ### Shared Library
 
 In windows, "__declspec(dllexport)" should be used to export the symbol. If C++ has code like bellow, 
-then the macro "DLL_EXPORT" should be defined in CMakeLists.txt.
+then the macro "DLL_EXPORT" should be defined in CMakeLists.txt. 
 
 ```C++
 #ifdef DLL_EXPORT
@@ -41,8 +41,10 @@ DLL_API void ExportFun();
 ```
 
 ```cmake
-target_compile_definitions(target PRIVATE DLL_EXPORT)
+target_compile_definitions(target PUBLIC DLL_EXPORT)
 ```
+
+"PUBLIC" is required, should not "PRIVATE".
 
 ### install
 
