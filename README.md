@@ -14,7 +14,7 @@
 - **CMAKE_CXX_COMPILER**: claim c++ compiler.
 - **CMAKE_BUILD_TYPE**: build type, debug or release or others.
 
-## Important command
+## Notes
 
 ### file
 
@@ -24,6 +24,26 @@
 ``` cmake
 file (GLOB_RECURSE src_files src/*.cpp)
 ```
+
+### Shared Library
+
+In windows, "__declspec(dllexport)" should be used to export the symbol. If C++ has code like bellow, 
+then the macro "DLL_EXPORT" should be defined in CMakeLists.txt.
+
+```C++
+#ifdef DLL_EXPORT
+#define DLL_API __declspec(dllexport)
+#else
+#define DLL_API __declspec(dllimport)
+#endif
+
+DLL_API void ExportFun();
+```
+
+```cmake
+target_compile_definitions(target PRIVATE DLL_EXPORT)
+```
+
 ### install
 
 Deploy files to target directory. First set the base path of deploy destination.
@@ -45,11 +65,15 @@ install (DIRECTORY ${PROJECT_SOURCE_DIR}/config/ DESTINATION ./config)
 install (FILES ${PROJECT_SOURCE_DIR}/log/log.txt DESTINATION ./)
 ```
 
-## Sub Project
+### Sub Project
 
-### library include private and public
+#### library include private and public
 
-- When a project is mean to build a static library or shared library, target include directory should be public. 
+When a project is mean to build a static library or shared library, target include directory should be public. 
 Otherwise, other subproject which uses this library can not see the include path.
 
-- After build, shared library should be copied to the same directory with executable file.
+#### copy shared library
+
+After build, shared library should be copied to the same directory with executable file.
+
+
