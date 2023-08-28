@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.26)
 
 project (TemplateDeploy)
 
+set(CMAKE_CXX_STANDARD 20)
+
 # exe
 
 file (GLOB_RECURSE src_files src/*.cpp)

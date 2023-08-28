@@ -4,6 +4,8 @@ cmake_minimum_required(VERSION 3.26)
 # set the project name
 project (TemplateSingleExe)
 
+set(CMAKE_CXX_STANDARD 20)
+
 # collect all source
 # file (GLOB ..) -> generate a list of all files that match the globbing expressions.
 # file (GLOB_RECURSE ..) -> like GLOB, but traverse all the subdirectories.
