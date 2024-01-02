@@ -1,0 +1,1 @@
+cmake -DCMAKE_MAKE_PROGRAM=E:/jetbrains/apps/CLion/ch-0/232.9921.42/bin/ninja/win/x64/ninja.exe -G "Ninja" -S "./" -B "./build/"
