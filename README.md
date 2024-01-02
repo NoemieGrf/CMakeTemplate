@@ -1,3 +1,25 @@
+## Generator
+
+Example cmd for generating visual stuido files. If make program not found, set CMAKE_MAKE_PROGRAM to MSBuild.exe.
+
+```powershell
+cmake -G "Visual Studio 17 2022" -S "./" -B "./build/"
+```
+
+Example cmd for generating mingw files. If make program not found, set CMAKE_MAKE_PROGRAM to mingw32-make.exe.
+
+``` powershell
+cmake -G "MinGW Makefiles" -S "./" -B "./build/"
+```
+
+Example cmd for generating ninja files. If make program not found, set CMAKE_MAKE_PROGRAM to ninja.exe.
+
+``` powershell
+cmake -G "Ninja" -S "./" -B "./build/"
+```
+
+
+
 
 ## Useful predefined variables
 
@@ -87,5 +109,4 @@ Command above means, after build finish of project "targetExe", run custom comma
 of project "targetDll" to directory "CMAKE_CURRENT_BINARY_DIR".
 CMAKE_COMMAND is a variable which stores the cmake executable file path, 
 TARGET_FILE is a expression which returns the artifacts of project "targetDll".
-
 
