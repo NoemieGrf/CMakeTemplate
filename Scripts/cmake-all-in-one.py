@@ -1,4 +1,5 @@
 import subprocess
+import argparse
 
 
 def run(args_list: list[str], fp) -> None:
@@ -17,3 +18,49 @@ def run(args_list: list[str], fp) -> None:
     pass
 
 
+def gen_and_build(fp) -> None:
+    gen_args_list: list[str] = ['cmake',
+                            '-S ./llvm-project/llvm',
+                            '-B ./build/',
+                            '-DCMAKE_BUILD_TYPE=Release',
+                            #'-DLLVM_ENABLE_PROJECTS=all',
+                            '-DCMAKE_CXX_COMPILER=clang++',
+                            '-DCMAKE_C_COMPILER=clang']
+    
+    run(gen_args_list, fp)
+
+    build_args_list: list[str] = ['cmake',
+                                  '--build ./build/',
+                                  '--config Release',
+                                  '-j18']
+    
+    run(build_args_list, fp)
+    pass
+
+
+def install(fp) -> None:
+    args_list: list[str] = ['cmake',
+                            '--install',
+                            './build/',
+                            '--prefix "D:/Programmes/llvm-src-build/"']
+    
+    run(args_list, fp)
+    pass
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Cmake all in one')
+    parser.add_argument('-B', '--build', action='store_true', default=False, help='generate and build')
+    parser.add_argument('-I', '--install', action='store_true', default=False, help='install')
+
+    args = parser.parse_args()
+
+    if args.build:
+        with open('build.log', 'w') as fp:
+            gen_and_build(fp)
+    elif args.install:
+        with open('install.log', 'w') as fp:
+            install(fp)
+
+    pass
+    
