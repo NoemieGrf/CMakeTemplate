@@ -1,6 +1,27 @@
 import subprocess
 import argparse
 
+# File structure:
+# 
+# root/
+#  |-- llvm-project/
+#  |-- build-llvm.py
+# 
+# Directory 'root/llvm-project/' is the git repo of LLVM.
+# Run: 'python build-llvm.py --build'
+# Directory ./build will be generated under root.
+# Run: 'python build-llvm.py --install'
+# The LLVM will be installed in computer.
+#
+# After build and install, file structure:
+# 
+# root/
+#  |-- llvm-project/
+#  |-- build/
+#  |-- build-llvm.py
+#  |-- build.log
+#  |-- install.log
+
 
 def run(args_list: list[str], fp) -> None:
     args: str = ' '.join(args_list)
