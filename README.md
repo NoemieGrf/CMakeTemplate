@@ -1,5 +1,7 @@
 ## Generator
 
+### Build system target files.
+
 Example cmd for generating visual stuido files. If make program not found, set CMAKE_MAKE_PROGRAM to MSBuild.exe.
 
 ```powershell
@@ -18,23 +20,34 @@ Example cmd for generating ninja files. If make program not found, set CMAKE_MAK
 cmake -G "Ninja" -S "./" -B "./build/"
 ```
 
+### Compiler
 
+Use CMAKE_CXX_COMPILER and CMAKE_C_COMPILER to define which compiler to use.
+
+``` shell
+-DCMAKE_CXX_COMPILER="\path\to\cpp\compiler.exe"
+-DCMAKE_C_COMPILER="\path\to\c\compiler.exe"
+```
+
+### Other useful command parameter
+
+``` shell
+-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
+```
+
+This command will generate compile_commands.json in build directory, which is used for clangd C++ insights.
 
 
 ## Useful predefined variables
 
 - **PROJECT_SOURCE_DIR**: directory of the last call to the project() command.
 - **CMAKE_CURRENT_SOURCE_DIR**: the directory of currently processing CMakeLists.txt.
+- **EXECUTABLE_OUTPUT_PATH**: binary artifacts output path.
 - **PROJECT_NAME**: project name defined by project().
+- **CMAKE_BUILD_TYPE**: build type, debug or release or others.
 - **CMAKE_MAJOR_VERSION**: cmake major version.
 - **CMAKE_MINOR_VERSION**: cmake minor version.
 - **CMAKE_PATCH_VERSION**: cmake patch version.
-- **CMAKE_SYSTEM_PROCESSOR**: cpu name.
-- **CMAKE_C_FLAGS**: compiler options for c compiler.
-- **CMAKE_CXX_FLAGS**: compiler options for c++ compiler.
-- **CMAKE_C_COMPILER**: claim c compiler.
-- **CMAKE_CXX_COMPILER**: claim c++ compiler.
-- **CMAKE_BUILD_TYPE**: build type, debug or release or others.
 
 ## Notes
 
